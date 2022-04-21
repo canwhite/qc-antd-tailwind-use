@@ -1,9 +1,10 @@
 ## qc-antd-tailwind-use
 
-css modules 、 sass 、antd and tailwind
+css modules 、 sass 、antd and tailwind  
+craco开发部分webpack配置
 
 
-### how to use tailwind
+## how to use tailwind
 
 ```
 1.装包，这三个，npm或yarn都可以
@@ -12,16 +13,22 @@ css modules 、 sass 、antd and tailwind
 "tailwindcss": "*"
 
 2.添加craco配置层
+
+(1)craco安装
 npm install @craco/craco
-接着更改scripts
+
+(2)接着更改scripts
 "scripts": {
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject"
 },
-然后根目录手动创建一个craco.config.js文件，加入插件
+
+(3)然后根目录手动创建一个craco.config.js文件，加入插件
 主要就是这俩插件，当然我们可以eject之后，去更改内置的postcss配置
+这里我们使用craco暴露部分配置即可
+craco.config.js
 module.exports = {
     style: {
         postOptions: {
@@ -33,8 +40,11 @@ module.exports = {
     },
 }
 
+
+
 3.创建配置文件
 npx tailwind init
+
 编辑：
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
@@ -47,6 +57,7 @@ module.exports = {
   },
   plugins: [],
 }
+
 
 4.将tailwind引入src/index.css头部
 @tailwind base;
@@ -61,10 +72,11 @@ import './index.css';
 
 5.使用
 <div className='text-red-500'>xxx</div>
+PS:注意处了黑白色，其他颜色类要加权重
 ```
 
 
-### how to use antd
+## how to use antd
 
 ```
 1.yarn add antd
